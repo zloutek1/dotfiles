@@ -28,7 +28,7 @@ bindsym $mod+F2			exec --no-startup-id $BROWSER
 bindsym $mod+Shift+q		[con_id="__focused__" instance="^(?!dropdown_).*$"] kill
 
 bindsym $mod+r 			mode "resize"
-bindsym $mod+Shift+r 		reload
+bindsym $mod+Shift+r 		restart
 
 bindsym $mod+t			split toggle
 bindsym $mod+Shift+t		gaps inner current set 15; gaps outer current set 15
@@ -119,9 +119,9 @@ bindsym $mod+Shift+0 	move container to workspace $ws10
 
 
 # ^v^v^v^ [ Autostart ] ^V^V^V^ #
-exec --no-startup-id 	nm-applet
-exec --no-startup-id	nitroget --restore
-
+exec 		--no-startup-id 	nm-applet
+exec 		--no-startup-id		nitroget --restore
+exec_always 	--no-startup-id 	$HOME/.config/polybar/launch.sh
 
 
 
