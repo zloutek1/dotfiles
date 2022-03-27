@@ -12,7 +12,7 @@ command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"                
 command -v git >/dev/null  && alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"  # use config command for dotfiles git repo
 
 # colors
-alias ls="ls --color=auto" \
+alias ls="${BASH_ALIASES[ls]} --color=auto" \
       grep="grep --color=auto" \
       diff="diff --color=auto"
 
