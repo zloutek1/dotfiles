@@ -9,7 +9,7 @@ alias valgrid="valgrid --leak-check=full --track-origins=yes --show-reachable=ye
 alias ls="ls -A -hN --group-directories-first" \
 
 command -v nvim >/dev/null && alias vim="nvim" vimdiff="nvim -d"                        # use neovim instead of vim
-command -v git >/dev/null  && alias config=git --git-dir=$HOME/.cfg/ --work-tree=$HOME  # use config command for dotfiles git repo
+command -v git >/dev/null  && alias config="git --git-dir=$HOME/.cfg/ --work-tree=$HOME"  # use config command for dotfiles git repo
 
 # colors
 alias ls="ls --color=auto" \
