@@ -27,6 +27,9 @@ bindsym $mod+space		focus mode_toggle
 
 bindsym $mod+F2			exec --no-startup-id $BROWSER
 
+bindsym Print 			exec i3-scrot
+bindsym --release Shift+Print	exec i3-scrot -s
+
 # ^v^v^v^ [ Letter Key Bindings ] ^V^V^V^ #
 bindsym $mod+Shift+q		[con_id="__focused__" instance="^(?!dropdown_).*$"] kill
 
@@ -36,10 +39,10 @@ bindsym $mod+Shift+r 		restart
 bindsym $mod+t			split toggle
 bindsym $mod+Shift+t		gaps inner current set 15; gaps outer current set 15
 
-bindsym $mod+o			sticky toggle
+bindsym $mod+s			sticky toggle
 
-bindsym $mod+s			gaps inner current plus 5
-bindsym $mod+Shift+s		gaps inner current minus 5
+bindsym $mod+g			gaps inner current plus 5
+bindsym $mod+Shift+g		gaps inner current minus 5
 
 bindsym $mod+d 			exec --no-startup-id dmenu_run
 bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
