@@ -10,6 +10,7 @@ alias valgrid="valgrid --leak-check=full --track-origins=yes --show-reachable=ye
 alias ls="ls -A -hN --group-directories-first"
 alias mvn="mvn -gs \"$XDG_CONFIG_HOME/maven/settings.xml\""
 alias yarn='yarn --use-yarnrc "$XDG_CONFIG_HOME/yarn/config"'
+alias sxiv="sxiv -a"
 
 
 # substitutions 
