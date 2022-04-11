@@ -17,72 +17,74 @@ client.focused #555555 #555555 #ffffff #4361ee   #4895EF
 
 
 
-
 # ^v^v^v^ [ Basic Bindings ] ^V^V^V^ #
 bindsym $mod+Return 		exec --no-startup-id $TERMINAL
 bindsym $mod+Shift+Return	exec --no-startup-id samedir
 
 bindsym $mod+Shift+space 	floating toggle
-bindsym $mod+space		focus mode_toggle
+bindsym $mod+space		    focus mode_toggle
 
-bindsym $mod+F2			exec --no-startup-id $BROWSER
+bindsym $mod+F2		    	exec --no-startup-id $BROWSER
 
-bindsym Print 			exec i3-scrot
+bindsym Print 		    	exec i3-scrot
 bindsym --release Shift+Print	exec i3-scrot -s
+
+
 
 # ^v^v^v^ [ Letter Key Bindings ] ^V^V^V^ #
 bindsym $mod+Shift+q		[con_id="__focused__" instance="^(?!dropdown_).*$"] kill
 
-bindsym $mod+r 			mode "resize"
+bindsym $mod+r 			    mode "resize"
 bindsym $mod+Shift+r 		restart
 
-bindsym $mod+t			split toggle
+bindsym $mod+t		    	split toggle
 bindsym $mod+Shift+t		gaps inner current set 15; gaps outer current set 15
 
-bindsym $mod+s			sticky toggle
+bindsym $mod+s			    sticky toggle
 
-bindsym $mod+g			gaps inner current plus 5
+bindsym $mod+g			    gaps inner current plus 5
 bindsym $mod+Shift+g		gaps inner current minus 5
 
-bindsym $mod+d 			exec --no-startup-id $HOME/.local/bin/dmenu_run_history
+bindsym $mod+d 			    exec --no-startup-id $HOME/.local/bin/dmenu_run_history
 bindsym $mod+Shift+d		gaps inner current set 0; gaps outer current set 0
 
-bindsym $mod+f			fullscreen toggle
+bindsym $mod+f			    fullscreen toggle
 
-bindsym $mod+h			focus left
+bindsym $mod+h			    focus left
 bindsym $mod+Shift+h		move left 30
-bindsym $mod+Ctrl+h		move workspace to output left
+bindsym $mod+Ctrl+h		    move workspace to output left
 
-bindsym $mod+j			focus down
+bindsym $mod+j			    focus down
 bindsym $mod+Shift+j		move down 30
-bindsym $mod+Ctrl+j		move workspace to output down
+bindsym $mod+Ctrl+j		    move workspace to output down
 
-bindsym $mod+k			focus up
+bindsym $mod+k			    focus up
 bindsym $mod+Shift+k		move up 30
-bindsym $mod+Ctrl+k		move workspace to output up
+bindsym $mod+Ctrl+k		    move workspace to output up
 
-bindsym $mod+l			focus right
+bindsym $mod+l		    	focus right
 bindsym $mod+Shift+l		move right 30
-bindsym $mod+Ctrl+l		move workspace to output right
+bindsym $mod+Ctrl+l		    move workspace to output right
 
-bindsym $mod+Left		focus left
+bindsym $mod+Left   		focus left
 bindsym $mod+Shift+Left		move left 30
 bindsym $mod+Ctrl+Left		move workspace to output left
 
-bindsym $mod+Down		focus down
+bindsym $mod+Down	    	focus down
 bindsym $mod+Shift+Down		move down 30
 bindsym $mod+Ctrl+Down		move workspace to output down
 
-bindsym $mod+Up			focus up
+bindsym $mod+Up			    focus up
 bindsym $mod+Shift+Up		move up 30
 bindsym $mod+Ctrl+Up		move workspace to output up
 
-bindsym $mod+Right		focus right
+bindsym $mod+Right	    	focus right
 bindsym $mod+Shift+Right	move right 30
 bindsym $mod+Ctrl+Right		move workspace to output right
 
-bindsym $mod+z			gaps outer current plus 5
+bindsym $mod+z		    	gaps outer current plus 5
 bindsym $mod+Shift+z		gaps outer current minus 5
+
 
 
 # ^v^v^v^ [ Workspace names ] ^V^V^V^ #
@@ -98,6 +100,7 @@ set $ws9 "9"
 set $ws10 "10"
 
 
+
 # ^v^v^v^ [ Switch to workspace ] ^V^V^V^ #
 bindsym $mod+1 		workspace $ws1
 bindsym $mod+2 		workspace $ws2
@@ -109,6 +112,7 @@ bindsym $mod+7 		workspace $ws7
 bindsym $mod+8 		workspace $ws8
 bindsym $mod+9		workspace $ws9
 bindsym $mod+0 		workspace $ws10
+
 
 
 # ^v^v^v^ [ Move focused window to workspace ] ^V^V^V^ #
@@ -124,46 +128,47 @@ bindsym $mod+Shift+9 	move container to workspace $ws9
 bindsym $mod+Shift+0 	move container to workspace $ws10
 
 
+
 # ^v^v^v^ [ Autostart ] ^V^V^V^ #
 exec 		--no-startup-id 	nm-applet
 exec_always	--no-startup-id		nitrogen --restore
-exec_always 	--no-startup-id 	$HOME/.config/polybar/launch.sh
+exec_always --no-startup-id 	$HOME/.config/polybar/launch.sh
+exec        --no-startup-id     i3-battery-popup -n -t 1m
+
+
 
 # ^v^v^v^ [ Default float ] ^V^V^V^ #
 for_window [title="Android Emulator*"] floating enable
 
 
 
-
-
-
-# Use pactl to adjust volume in PulseAudio.
+# ^v^v^v^ [ Function keys ] ^V^V^V^ #
 set $refresh_i3status killall -SIGUSR1 i3status
 bindsym XF86AudioRaiseVolume 	exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10% && $refresh_i3status
 bindsym XF86AudioLowerVolume 	exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% && $refresh_i3status
-bindsym XF86AudioMute 		exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
-bindsym XF86AudioMicMute 	exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
+bindsym XF86AudioMute 		    exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && $refresh_i3status
+bindsym XF86AudioMicMute 	    exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle && $refresh_i3status
 
-bindsym XF86MonBrightnessUp 	exec --no-statup-id xbacklight +10
-bindsym XF86MonBrightnessDown 	exec --no-statup-id xbacklight -10
+bindsym XF86MonBrightnessUp 	exec --no-startup-id xbacklight +5
+bindsym XF86MonBrightnessDown 	exec --no-startup-id xbacklight -5
 
 
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
+    bindsym j resize shrink width 10 px or 10 ppt
+    bindsym k resize grow height 10 px or 10 ppt
+    bindsym l resize shrink height 10 px or 10 ppt
+    bindsym semicolon resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
