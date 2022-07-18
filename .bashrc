@@ -2,20 +2,21 @@
 
 [[ $- != *i* ]] && return
 shopt -s autocd
-HISTSIZE= HISTFILESIZE= # Infinite history.
 
+[ -f "$XDG_CONFIG_HOME/envvarrc" ] && source "$XDG_CONFIG_HOME/envvarrc"
+[ -f "$XDG_CONFIG_HOME/aliasrc" ] && source "$XDG_CONFIG_HOME/aliasrc"
 
 export PS1="[\[$(tput sgr0)\]\[\033[38;5;33m\]\W\[$(tput sgr0)\]]\[$(tput sgr0)\]\[\033[38;5;33m\]\\$\[$(tput sgr0)\] \[$(tput sgr0)\]"
-
-
-[ -f "$HOME/.config/envvarrc" ] && source "$HOME/.config/envvarrc"
-[ -f "$HOME/.config/aliasrc" ] && source "$HOME/.config/aliasrc"
 
 # remove background colors from ls
 eval "$(dircolors -p | \
 	sed 's/ 4[0-9];/ 01;/; s/;4[0-9];/;01;/g; s/;4[0-9] /;01 /' | \
 	dircolors /dev/stdin)"
 
+# share histroy between terminals
+shopt -s histappend
+export HISTCONTROL=ignoredups:erasedups
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND$'\n'}history -a; history -c; history -r"
 
 # flutter variables
 export ANDROID_SDK_ROOT='/opt/android-sdk'
